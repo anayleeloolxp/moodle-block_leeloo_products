@@ -176,14 +176,23 @@ class block_leeloo_prodcuts extends block_base {
             $productalias = $productsin->product_alias;
             $urlalias = $productid . '-' . $productalias;
 
-            $leeloodiv = "<div class='leeloo_productdiv' id='leeloo_div_$productid'>
-                <a class='leeloo_pricut_buy'
+            if (!$jsessionid) {
+                $loginurl = $CFG->wwwroot . '/login/index.php';
+                $buybuttonhtml = "<a href='$loginurl'>
+                    $buybutton
+                </a>";
+            } else {
+                $buybuttonhtml = "<a class='leeloo_pricut_buy'
                     id='leeloo_cert_$productid'
                     data-toggle='modal'
                     data-target='#leelooprodcutModal_$productid'
                     href='https://leeloolxp.com/products-listing/product/$urlalias?session_id=$jsessionid'>
                         $buybutton
-                </a>
+                </a>";
+            }
+
+            $leeloodiv = "<div class='leeloo_productdiv' id='leeloo_div_$productid'>
+                $buybuttonhtml
             </div>";
 
             $leeloomodal = "<div class='modal fade leelooProdcutModal' tabindex='-1' aria-labelledby='gridSystemModalLabel' id='leelooprodcutModal_$productid' role='dialog'>
