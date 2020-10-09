@@ -168,15 +168,25 @@ class block_leeloo_prodcuts extends block_base {
 
         $this->content->text = '<div class="leeloo_prodcutslist">';
 
+        $buybutton = get_string('buy', 'block_leeloo_prodcuts');
+
         foreach ($prodcutslist as $productsin) {
             $productprice = $productsin->product_msrp + 0;
             $productid = $productsin->product_id;
             $productalias = $productsin->product_alias;
             $urlalias = $productid . '-' . $productalias;
 
-            $leeloodiv = "<div class='leeloo_productdiv' id='leeloo_div_$productid'><a class='leeloo_pricut_buy' id='leeloo_cert_$productid' data-toggle='modal' data-target='#leelooprodcutModal_$productid' href='https://leeloolxp.com/products-listing/product/$urlalias?session_id=$jsessionid'>Buy</a></div>";
+            $leeloodiv = "<div class='leeloo_productdiv' id='leeloo_div_$productid'>
+                <a class='leeloo_pricut_buy'
+                    id='leeloo_cert_$productid'
+                    data-toggle='modal'
+                    data-target='#leelooprodcutModal_$productid'
+                    href='https://leeloolxp.com/products-listing/product/$urlalias?session_id=$jsessionid'>
+                        $buybutton
+                </a>
+            </div>";
 
-            $leeloomodal = "<div class='modal fade leelooProdcutModal' tabindex='-1' aria-labelledby='gridSystemModalLabel' id='leelooprodcutModal_$productid' role='dialog' style='max-width: 90%;'>
+            $leeloomodal = "<div class='modal fade leelooProdcutModal' tabindex='-1' aria-labelledby='gridSystemModalLabel' id='leelooprodcutModal_$productid' role='dialog'>
                 <div class='modal-dialog'>
                     <div class='modal-content'>
                         <div class='modal-header'>
