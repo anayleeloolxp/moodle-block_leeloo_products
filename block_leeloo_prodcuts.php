@@ -63,7 +63,7 @@ class block_leeloo_prodcuts extends block_base {
 
         global $CFG;
         global $SESSION;
-        $jsession_id = $SESSION->jsession_id;
+        $jsessionid = $SESSION->jsession_id;
 
         require_once($CFG->libdir . '/filelib.php');
 
@@ -129,21 +129,21 @@ class block_leeloo_prodcuts extends block_base {
 
         $this->content = new stdClass();
 
-        $leelooapi_base_url = 'https://leeloolxp.com/api/moodle_sell_course_plugin/';
+        $leelooapibaseurl = 'https://leeloolxp.com/api/moodle_sell_course_plugin/';
 
         $vendorkey = get_config('block_leeloo_prodcuts', 'vendorkey');
 
-        $encryptionMethod = "AES-256-CBC"; // AES is used by the U.S. gov't to encrypt top secret documents.
-        $secretHash = "25c6c7ff35b9979b151f2136cd13b0ff";
+        $encryptionmethod = "AES-256-CBC"; // AES is used by the U.S. gov't to encrypt top secret documents.
+        $secrethash = "25c6c7ff35b9979b151f2136cd13b0ff";
 
-        $encrypt_licensekey = openssl_encrypt($vendorkey, $encryptionMethod, $secretHash);
+        $encryptlicensekey = openssl_encrypt($vendorkey, $encryptionmethod, $secrethash);
 
         $post = [
-            'license_key' => $encrypt_licensekey,
+            'license_key' => $encryptlicensekey,
         ];
 
-        $url = $leelooapi_base_url . 'get_products_by_licensekey.php';
-        $postdata = '&license_key=' . $encrypt_licensekey;
+        $url = $leelooapibaseurl . 'get_products_by_licensekey.php';
+        $postdata = '&license_key=' . $encryptlicensekey;
         $curl = new curl;
         $options = array(
             'CURLOPT_RETURNTRANSFER' => true,
@@ -155,11 +155,11 @@ class block_leeloo_prodcuts extends block_base {
             return $this->content;
         }
 
-        $products_response = json_decode($output);
+        $productsresponse = json_decode($output);
 
         $prodcutslist = array();
-        if ($products_response->status == 'true') {
-            foreach ($products_response->data->prodcuts as $product) {
+        if ($productsresponse->status == 'true') {
+            foreach ($productsresponse->data->prodcuts as $product) {
                 if (in_array($product->product_id, $productsarr)) {
                     $prodcutslist[$product->product_id] = $product;
                 }
@@ -168,19 +168,19 @@ class block_leeloo_prodcuts extends block_base {
 
         $this->content->text = '<div class="leeloo_prodcutslist">';
 
-        foreach ($prodcutslist as $product_sin) {
-            $productprice = $product_sin->product_msrp + 0;
-            $productid = $product_sin->product_id;
-            $product_alias = $product_sin->product_alias;
-            $url_alias = $productid . '-' . $product_alias;
+        foreach ($prodcutslist as $productsin) {
+            $productprice = $productsin->product_msrp + 0;
+            $productid = $productsin->product_id;
+            $productalias = $productsin->product_alias;
+            $urlalias = $productid . '-' . $productalias;
 
-            $leeloo_div = "<div class='leeloo_productdiv' id='leeloo_div_$productid'><a class='leeloo_pricut_buy' id='leeloo_cert_$productid' data-toggle='modal' data-target='#leelooprodcutModal_$productid' href='https://leeloolxp.com/products-listing/product/$url_alias?session_id=$jsession_id'>Buy</a></div>";
+            $leeloodiv = "<div class='leeloo_productdiv' id='leeloo_div_$productid'><a class='leeloo_pricut_buy' id='leeloo_cert_$productid' data-toggle='modal' data-target='#leelooprodcutModal_$productid' href='https://leeloolxp.com/products-listing/product/$urlalias?session_id=$jsessionid'>Buy</a></div>";
 
-            $leeloo_modal = "<div class='modal fade leelooProdcutModal' tabindex='-1' aria-labelledby='gridSystemModalLabel' id='leelooprodcutModal_$productid' role='dialog' style='max-width: 90%;'>
+            $leeloomodal = "<div class='modal fade leelooProdcutModal' tabindex='-1' aria-labelledby='gridSystemModalLabel' id='leelooprodcutModal_$productid' role='dialog' style='max-width: 90%;'>
                 <div class='modal-dialog'>
                     <div class='modal-content'>
                         <div class='modal-header'>
-                            <h4 class='modal-title'>$product_sin->product_name</h4>
+                            <h4 class='modal-title'>$productsin->product_name</h4>
                             <button type='button' class='close' data-dismiss='modal'>&times;</button>
                         </div>
                         <div class='modal-body'>
@@ -193,7 +193,7 @@ class block_leeloo_prodcuts extends block_base {
 
             $this->content->text .= '<div class="leeloo_product">';
 
-            $this->content->text .= '<div class="leeloo_product_name">' . $product_sin->product_name . '</div>';
+            $this->content->text .= '<div class="leeloo_product_name">' . $productsin->product_name . '</div>';
 
             $this->content->text .= '<div class="leeloo_product_details">';
 
@@ -201,7 +201,7 @@ class block_leeloo_prodcuts extends block_base {
 
             $this->content->text .= '</div>';
 
-            $this->content->text .= $leeloo_div . $leeloo_modal;
+            $this->content->text .= $leeloodiv . $leeloomodal;
 
             $this->content->text .= '</div>';
         }
