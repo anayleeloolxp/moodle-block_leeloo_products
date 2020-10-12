@@ -1,4 +1,5 @@
 # Leeloo LXP Products List Block
+This block allows admin to show the Leeloo LXP products in Moodle, they can sell whatever prodcuts they have on Leeloo LXP. the purchase process happens inside popup so user dont leave the moodle site. 
 
 Installation Instructions
 =========================
