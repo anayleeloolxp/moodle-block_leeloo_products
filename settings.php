@@ -25,12 +25,20 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    $settings->add(new admin_setting_configtext(
+
+    require_once($CFG->dirroot . '/blocks/leeloo_prodcuts/lib.php');
+
+    $setting = new admin_setting_configtext(
         'block_leeloo_prodcuts/license',
         get_string('license', 'block_leeloo_prodcuts'),
         get_string('license', 'block_leeloo_prodcuts'),
         0
-    ));
+    );
+    $setting->set_updatedcallback(updateconfleeloo_prodcuts());
+    $settings->add($setting);
+
+    $setting = new admin_setting_configleeloo_prodcuts('block_leeloo_prodcuts/settingsjson', '', '', '', PARAM_RAW);
+    $settings->add($setting);
 
     $settings->add(new admin_setting_configtext(
         'block_leeloo_prodcuts/vendorkey',

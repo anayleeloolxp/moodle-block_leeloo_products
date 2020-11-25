@@ -74,50 +74,8 @@ class block_leeloo_prodcuts extends block_base {
         }
 
         $leeloolxplicense = get_config('block_leeloo_prodcuts')->license;
-
-        $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
-        $postdata = '&license_key=' . $leeloolxplicense;
-
-        $curl = new curl;
-
-        $options = array(
-            'CURLOPT_RETURNTRANSFER' => true,
-            'CURLOPT_HEADER' => false,
-            'CURLOPT_POST' => count($postdata),
-        );
-
-        if (!$output = $curl->post($url, $postdata, $options)) {
-            $this->content->text = get_string('nolicense', 'block_leeloo_prodcuts');
-            return $this->content;
-        }
-
-        $infoleeloolxp = json_decode($output);
-
-        if ($infoleeloolxp->status != 'false') {
-            $leeloolxpurl = $infoleeloolxp->data->install_url;
-        } else {
-            $this->content->text = get_string('nolicense', 'block_leeloo_prodcuts');
-            return $this->content;
-        }
-
-        $url = $leeloolxpurl . '/admin/Theme_setup/get_courses_for_sale';
-
-        $postdata = '&license_key=' . $leeloolxplicense;
-
-        $curl = new curl;
-
-        $options = array(
-            'CURLOPT_RETURNTRANSFER' => true,
-            'CURLOPT_HEADER' => false,
-            'CURLOPT_POST' => count($postdata),
-        );
-
-        if (!$output = $curl->post($url, $postdata, $options)) {
-            $this->content->text = get_string('nolicense', 'block_leeloo_prodcuts');
-            return $this->content;
-        }
-
-        $resposedata = json_decode($output);
+        $settingsjson = get_config('block_leeloo_prodcuts')->settingsjson;
+        $resposedata = json_decode(base64_decode($settingsjson));
         $settingleeloolxp = $resposedata->data->sale_courses_data;
 
         if (empty($settingleeloolxp->pro_block_title)) {
@@ -248,5 +206,13 @@ class block_leeloo_prodcuts extends block_base {
      */
     public function applicable_formats() {
         return array('all' => true);
+    }
+    
+    /**
+     * Get settings from Leeloo
+     */
+    public function cron() {
+        require_once($CFG->dirroot . '/blocks/leeloo_prodcuts/lib.php');
+        updateconfleeloo_prodcuts();
     }
 }
