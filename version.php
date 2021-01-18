@@ -31,3 +31,6 @@ $plugin->component = 'block_leeloo_prodcuts'; // Full name of the plugin (used f
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v1.6.0';
 $plugin->cron = 60*5; //5mins.
+$plugin->dependencies = array(
+    'auth_leeloo_pay_sso' => 2020022105
+);
