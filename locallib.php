@@ -46,11 +46,13 @@ function updateconfleeloo_prodcuts() {
         'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
+        $falsevar = 0;
     }
     $infoleeloolxp = json_decode($output);
     if ($infoleeloolxp->status != 'false') {
         $leeloolxpurl = $infoleeloolxp->data->install_url;
     } else {
+        $falsevar = 0;
     }
     $url = $leeloolxpurl . '/admin/Theme_setup/get_courses_for_sale';
     $postdata = [
@@ -63,6 +65,7 @@ function updateconfleeloo_prodcuts() {
         'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
+        $falsevar = 0;
     }
     set_config('settingsjson', base64_encode($output), 'block_leeloo_prodcuts');
 }
