@@ -29,7 +29,11 @@ defined('MOODLE_INTERNAL') || die();
  * Fetch and Update Configration From L
  */
 function updateconfleeloo_prodcuts() {
-    $leeloolxplicense = get_config('block_leeloo_prodcuts')->license;
+    if (isset(get_config('block_leeloo_prodcuts')->license)) {
+        $leeloolxplicense = get_config('block_leeloo_prodcuts')->license;
+    } else {
+        return;
+    }
 
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
     $postdata = [
@@ -39,7 +43,7 @@ function updateconfleeloo_prodcuts() {
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => 1,
+        'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
     }
@@ -56,7 +60,7 @@ function updateconfleeloo_prodcuts() {
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => 1,
+        'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
     }

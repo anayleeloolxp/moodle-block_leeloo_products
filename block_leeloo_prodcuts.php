@@ -63,7 +63,7 @@ class block_leeloo_prodcuts extends block_base {
 
         global $CFG;
         global $SESSION;
-        $jsessionid = $SESSION->jsession_id;
+        @$jsessionid = $SESSION->jsession_id;
 
         require_once($CFG->libdir . '/filelib.php');
 
@@ -94,7 +94,7 @@ class block_leeloo_prodcuts extends block_base {
         $encryptionmethod = "AES-256-CBC"; // AES is used by the U.S. gov't to encrypt top secret documents.
         $secrethash = "25c6c7ff35b9979b151f2136cd13b0ff";
 
-        $encryptlicensekey = openssl_encrypt($vendorkey, $encryptionmethod, $secrethash);
+        $encryptlicensekey = @openssl_encrypt($vendorkey, $encryptionmethod, $secrethash);
 
         $post = [
             'license_key' => $encryptlicensekey,
@@ -107,7 +107,8 @@ class block_leeloo_prodcuts extends block_base {
         $curl = new curl;
         $options = array(
             'CURLOPT_RETURNTRANSFER' => true,
-            'CURLOPT_POSTFIELDS' => $post,
+            'CURLOPT_HEADER' => false,
+            'CURLOPT_POST' => count($postdata),
         );
 
         if (!$output = $curl->post($url, $postdata, $options)) {
@@ -209,7 +210,7 @@ class block_leeloo_prodcuts extends block_base {
     public function applicable_formats() {
         return array('all' => true);
     }
-    
+
     /**
      * Get settings from Leeloo
      */
