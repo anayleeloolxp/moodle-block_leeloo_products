@@ -25,7 +25,6 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-
     require_once($CFG->dirroot . '/blocks/leeloo_prodcuts/lib.php');
 
     $setting = new admin_setting_configtext(

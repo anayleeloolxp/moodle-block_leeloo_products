@@ -101,7 +101,9 @@ class block_leeloo_prodcuts extends block_base {
         ];
 
         $url = $leelooapibaseurl . 'get_products_by_licensekey.php';
-        $postdata = '&license_key=' . $encryptlicensekey;
+        $postdata = [
+            'license_key' => $encryptlicensekey,
+        ];
         $curl = new curl;
         $options = array(
             'CURLOPT_RETURNTRANSFER' => true,

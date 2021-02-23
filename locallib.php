@@ -28,11 +28,13 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Fetch and Update Configration From L
  */
-function updateconfleeloo_prodcuts(){
+function updateconfleeloo_prodcuts() {
     $leeloolxplicense = get_config('block_leeloo_prodcuts')->license;
-    
+
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
-    $postdata = '&license_key=' . $leeloolxplicense;
+    $postdata = [
+        'license_key' => $leeloolxplicense,
+    ];
     $curl = new curl;
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
@@ -40,16 +42,16 @@ function updateconfleeloo_prodcuts(){
         'CURLOPT_POST' => 1,
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
-        
     }
     $infoleeloolxp = json_decode($output);
     if ($infoleeloolxp->status != 'false') {
         $leeloolxpurl = $infoleeloolxp->data->install_url;
     } else {
-        
     }
     $url = $leeloolxpurl . '/admin/Theme_setup/get_courses_for_sale';
-    $postdata = '&license_key=' . $leeloolxplicense;
+    $postdata = [
+        'license_key' => $leeloolxplicense,
+    ];
     $curl = new curl;
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
@@ -57,7 +59,6 @@ function updateconfleeloo_prodcuts(){
         'CURLOPT_POST' => 1,
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
-        
     }
     set_config('settingsjson', base64_encode($output), 'block_leeloo_prodcuts');
 }
