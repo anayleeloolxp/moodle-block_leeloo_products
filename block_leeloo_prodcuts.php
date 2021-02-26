@@ -129,13 +129,13 @@ class block_leeloo_prodcuts extends block_base {
 
         $this->content->text = '<div class="leeloo_prodcutslist">';
 
-        $buybutton = get_string('buy', 'block_leeloo_prodcuts');
-
         foreach ($prodcutslist as $productsin) {
             $productprice = $productsin->product_msrp + 0;
             $productid = $productsin->product_id;
             $productalias = $productsin->product_alias;
             $urlalias = $productid . '-' . $productalias;
+
+            $buybutton = get_string('buy', 'block_leeloo_prodcuts') . '$' . $productprice;
 
             if (!$jsessionid) {
                 $loginurl = $CFG->wwwroot . '/login/index.php';
@@ -173,13 +173,9 @@ class block_leeloo_prodcuts extends block_base {
 
             $this->content->text .= '<div class="leeloo_product">';
 
+            $this->content->text .= '<div class="leeloo_product_image"><img style="width: 100%;" src="' . $productsin->imgurl . '"/></div>';
+
             $this->content->text .= '<div class="leeloo_product_name">' . $productsin->product_name . '</div>';
-
-            $this->content->text .= '<div class="leeloo_product_details">';
-
-            $this->content->text .= '<div class="leeloo_product_price">' . '$' . $productprice . '</div>';
-
-            $this->content->text .= '</div>';
 
             $this->content->text .= $leeloodiv . $leeloomodal;
 
