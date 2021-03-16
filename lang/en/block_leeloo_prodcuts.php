@@ -37,4 +37,4 @@ $string['buy'] = 'Buy for ';
 $string['nolicense'] = 'Invalid Leeloo LXP License ID';
 $string['license'] = 'Leeloo LXP License ID';
 
-$string['privacy:metadata'] = 'The Leeloo LXP Products (leeloo_prodcuts) block only shows information about courses and does not store data itself.';
+$string['privacy:metadata'] = 'The Leeloo LXP Products (leeloo_prodcuts) block only shows information and does not store data itself.';

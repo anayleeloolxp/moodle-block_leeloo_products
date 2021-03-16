@@ -76,6 +76,15 @@ class block_leeloo_prodcuts extends block_base {
         $leeloolxplicense = get_config('block_leeloo_prodcuts')->license;
         $settingsjson = get_config('block_leeloo_prodcuts')->settingsjson;
         $resposedata = json_decode(base64_decode($settingsjson));
+
+        if (!isset($resposedata->data->sale_courses_data)) {
+            $this->title = get_string('displayname', 'block_leeloo_prodcuts');
+            $this->content = new stdClass();
+            $this->content->text = '';
+            $this->content->footer = '';
+            return $this->content;
+        }
+
         $settingleeloolxp = $resposedata->data->sale_courses_data;
 
         if (empty($settingleeloolxp->pro_block_title)) {
