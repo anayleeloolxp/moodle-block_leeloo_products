@@ -52,6 +52,7 @@ function updateconfleeloo_prodcuts() {
     if ($infoleeloolxp->status != 'false') {
         $leeloolxpurl = $infoleeloolxp->data->install_url;
     } else {
+        set_config('settingsjson', base64_encode($output), 'block_leeloo_prodcuts');
         return;
     }
     $url = $leeloolxpurl . '/admin/Theme_setup/get_courses_for_sale';
