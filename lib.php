@@ -17,7 +17,7 @@
 /**
  * Library file for additional Functions
  *
- * @package    block_leeloo_prodcuts
+ * @package    block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,14 +26,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/adminlib.php');
-require_once($CFG->dirroot . '/blocks/leeloo_prodcuts/locallib.php');
+require_once($CFG->dirroot . '/blocks/leeloo_products/locallib.php');
 
 /**
  * The most flexibly setting, user is typing text
  *
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class admin_setting_configleeloo_prodcuts extends admin_setting {
+class admin_setting_configleeloo_products extends admin_setting {
 
     /** @var mixed int means PARAM_XXX type, string is a allowed format in regex */
     public $paramtype;

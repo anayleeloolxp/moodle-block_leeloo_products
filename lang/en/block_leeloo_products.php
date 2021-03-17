@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for leeloo_prodcuts block
+ * Lang strings for leeloo_products block
  *
- * @package   block_leeloo_prodcuts
+ * @package   block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['leeloo_prodcuts:addinstance'] = 'Add a new my courses block';
-$string['leeloo_prodcuts:myaddinstance'] = 'Add a new my courses block to Dashboard';
+$string['leeloo_products:addinstance'] = 'Add a new my courses block';
+$string['leeloo_products:myaddinstance'] = 'Add a new my courses block to Dashboard';
 $string['pluginname'] = 'Leeloo LXP Products';
 $string['displayname'] = 'Leeloo LXP Products';
 
@@ -37,4 +37,4 @@ $string['buy'] = 'Buy for ';
 $string['nolicense'] = 'Invalid Leeloo LXP License ID';
 $string['license'] = 'Leeloo LXP License ID';
 
-$string['privacy:metadata'] = 'The Leeloo LXP Products (leeloo_prodcuts) block only shows information and does not store data itself.';
+$string['privacy:metadata'] = 'The Leeloo LXP Products (leeloo_products) block only shows information and does not store data itself.';

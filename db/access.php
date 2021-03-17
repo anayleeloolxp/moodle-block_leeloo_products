@@ -17,7 +17,7 @@
 /**
  * Course overview block caps.
  *
- * @package   block_leeloo_prodcuts
+ * @package   block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
 
-    'block/leeloo_prodcuts:myaddinstance' => array(
+    'block/leeloo_products:myaddinstance' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes' => array(
@@ -37,7 +37,7 @@ $capabilities = array(
         'clonepermissionsfrom' => 'moodle/my:manageblocks',
     ),
 
-    'block/leeloo_prodcuts:addinstance' => array(
+    'block/leeloo_products:addinstance' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',

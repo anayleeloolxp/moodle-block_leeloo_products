@@ -17,7 +17,7 @@
 /**
  * Products block
  *
- * @package   block_leeloo_prodcuts
+ * @package   block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,17 +27,17 @@ defined('MOODLE_INTERNAL') || die;
 /**
  * Products block
  *
- * @package   block_leeloo_prodcuts
+ * @package   block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_leeloo_prodcuts extends block_base {
+class block_leeloo_products extends block_base {
     /**
      * Block initialization.
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_leeloo_prodcuts');
+        $this->title = get_string('pluginname', 'block_leeloo_products');
     }
 
     /**
@@ -55,7 +55,7 @@ class block_leeloo_prodcuts extends block_base {
     }
 
     /**
-     * Return contents of leeloo_prodcuts block
+     * Return contents of leeloo_products block
      *
      * @return stdClass contents of block
      */
@@ -67,18 +67,18 @@ class block_leeloo_prodcuts extends block_base {
 
         require_once($CFG->libdir . '/filelib.php');
 
-        $this->page->requires->js(new moodle_url($CFG->wwwroot . '/blocks/leeloo_prodcuts/js/custom.js'));
+        $this->page->requires->js(new moodle_url($CFG->wwwroot . '/blocks/leeloo_products/js/custom.js'));
 
         if ($this->content !== null) {
             return $this->content;
         }
 
-        $leeloolxplicense = get_config('block_leeloo_prodcuts')->license;
-        $settingsjson = get_config('block_leeloo_prodcuts')->settingsjson;
+        $leeloolxplicense = get_config('block_leeloo_products')->license;
+        $settingsjson = get_config('block_leeloo_products')->settingsjson;
         $resposedata = json_decode(base64_decode($settingsjson));
 
         if (!isset($resposedata->data->sale_courses_data)) {
-            $this->title = get_string('displayname', 'block_leeloo_prodcuts');
+            $this->title = get_string('displayname', 'block_leeloo_products');
             $this->content = new stdClass();
             $this->content->text = '';
             $this->content->footer = '';
@@ -88,7 +88,7 @@ class block_leeloo_prodcuts extends block_base {
         $settingleeloolxp = $resposedata->data->sale_courses_data;
 
         if (empty($settingleeloolxp->pro_block_title)) {
-            $settingleeloolxp->pro_block_title = get_string('displayname', 'block_leeloo_prodcuts');
+            $settingleeloolxp->pro_block_title = get_string('displayname', 'block_leeloo_products');
         }
         $this->title = $settingleeloolxp->pro_block_title;
 
@@ -98,7 +98,7 @@ class block_leeloo_prodcuts extends block_base {
 
         $leelooapibaseurl = 'https://leeloolxp.com/api/moodle_sell_course_plugin/';
 
-        $vendorkey = get_config('block_leeloo_prodcuts', 'vendorkey');
+        $vendorkey = get_config('block_leeloo_products', 'vendorkey');
 
         $encryptionmethod = "AES-256-CBC"; // AES is used by the U.S. gov't to encrypt top secret documents.
         $secrethash = "25c6c7ff35b9979b151f2136cd13b0ff";
@@ -121,7 +121,7 @@ class block_leeloo_prodcuts extends block_base {
         );
 
         if (!$output = $curl->post($url, $postdata, $options)) {
-            $this->content->text = get_string('nolicense', 'block_leeloo_prodcuts');
+            $this->content->text = get_string('nolicense', 'block_leeloo_products');
             return $this->content;
         }
 
@@ -136,7 +136,7 @@ class block_leeloo_prodcuts extends block_base {
             }
         }
 
-        $this->content->text = '<div class="leeloo_prodcutslist">';
+        $this->content->text = '<div class="leeloo_productslist">';
 
         foreach ($prodcutslist as $productsin) {
             $productprice = $productsin->product_msrp + 0;
@@ -144,7 +144,7 @@ class block_leeloo_prodcuts extends block_base {
             $productalias = $productsin->product_alias;
             $urlalias = $productid . '-' . $productalias;
 
-            $buybutton = get_string('buy', 'block_leeloo_prodcuts') . '$' . $productprice;
+            $buybutton = get_string('buy', 'block_leeloo_products') . '$' . $productprice;
 
             if (!$jsessionid) {
                 $loginurl = $CFG->wwwroot . '/login/index.php';
@@ -220,7 +220,7 @@ class block_leeloo_prodcuts extends block_base {
      * Get settings from Leeloo
      */
     public function cron() {
-        require_once($CFG->dirroot . '/blocks/leeloo_prodcuts/lib.php');
-        updateconfleeloo_prodcuts();
+        require_once($CFG->dirroot . '/blocks/leeloo_products/lib.php');
+        updateconfleeloo_products();
     }
 }

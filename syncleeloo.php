@@ -17,7 +17,7 @@
 /**
  * Moodle Get settings from L
  *
- * @package    block_leeloo_prodcuts
+ * @package    block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,5 +26,5 @@
 require('../../config.php');
 
 require_once($CFG->libdir . '/filelib.php');
-require_once($CFG->dirroot . '/blocks/leeloo_prodcuts/locallib.php');
-updateconfleeloo_prodcuts();
+require_once($CFG->dirroot . '/blocks/leeloo_products/locallib.php');
+updateconfleeloo_products();

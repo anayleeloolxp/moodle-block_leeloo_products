@@ -15,20 +15,20 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for block_leeloo_prodcuts.
+ * Privacy Subsystem implementation for block_leeloo_products.
  *
- * @package   block_leeloo_prodcuts
+ * @package   block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace block_leeloo_prodcuts\privacy;
+namespace block_leeloo_products\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy Subsystem for block_leeloo_prodcuts implementing null_provider.
+ * Privacy Subsystem for block_leeloo_products implementing null_provider.
  *
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

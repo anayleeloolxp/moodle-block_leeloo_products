@@ -17,7 +17,7 @@
 /**
  * Local Library file for additional Functions
  *
- * @package    block_leeloo_prodcuts
+ * @package    block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,9 +28,9 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Fetch and Update Configration From L
  */
-function updateconfleeloo_prodcuts() {
-    if (isset(get_config('block_leeloo_prodcuts')->license)) {
-        $leeloolxplicense = get_config('block_leeloo_prodcuts')->license;
+function updateconfleeloo_products() {
+    if (isset(get_config('block_leeloo_products')->license)) {
+        $leeloolxplicense = get_config('block_leeloo_products')->license;
     } else {
         return;
     }
@@ -52,7 +52,7 @@ function updateconfleeloo_prodcuts() {
     if ($infoleeloolxp->status != 'false') {
         $leeloolxpurl = $infoleeloolxp->data->install_url;
     } else {
-        set_config('settingsjson', base64_encode($output), 'block_leeloo_prodcuts');
+        set_config('settingsjson', base64_encode($output), 'block_leeloo_products');
         return;
     }
     $url = $leeloolxpurl . '/admin/Theme_setup/get_courses_for_sale';
@@ -68,5 +68,5 @@ function updateconfleeloo_prodcuts() {
     if (!$output = $curl->post($url, $postdata, $options)) {
         return;
     }
-    set_config('settingsjson', base64_encode($output), 'block_leeloo_prodcuts');
+    set_config('settingsjson', base64_encode($output), 'block_leeloo_products');
 }

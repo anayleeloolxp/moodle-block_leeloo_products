@@ -17,7 +17,7 @@
 /**
  * Version details
  *
- * @package   block_leeloo_prodcuts
+ * @package   block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version = 2019010700; // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires = 2018050800; // Requires this Moodle version.
-$plugin->component = 'block_leeloo_prodcuts'; // Full name of the plugin (used for diagnostics).
+$plugin->component = 'block_leeloo_products'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v1.6.0';
 $plugin->cron = 60 * 5; // 5 mins.

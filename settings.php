@@ -17,7 +17,7 @@
 /**
  * leeloo_featured_courses block settings
  *
- * @package   block_leeloo_prodcuts
+ * @package   block_leeloo_products
  * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,24 +25,24 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    require_once($CFG->dirroot . '/blocks/leeloo_prodcuts/lib.php');
+    require_once($CFG->dirroot . '/blocks/leeloo_products/lib.php');
 
     $setting = new admin_setting_configtext(
-        'block_leeloo_prodcuts/license',
-        get_string('license', 'block_leeloo_prodcuts'),
-        get_string('license', 'block_leeloo_prodcuts'),
+        'block_leeloo_products/license',
+        get_string('license', 'block_leeloo_products'),
+        get_string('license', 'block_leeloo_products'),
         0
     );
-    $setting->set_updatedcallback(updateconfleeloo_prodcuts());
+    $setting->set_updatedcallback(updateconfleeloo_products());
     $settings->add($setting);
 
-    $setting = new admin_setting_configleeloo_prodcuts('block_leeloo_prodcuts/settingsjson', '', '', '', PARAM_RAW);
+    $setting = new admin_setting_configleeloo_products('block_leeloo_products/settingsjson', '', '', '', PARAM_RAW);
     $settings->add($setting);
 
     $settings->add(new admin_setting_configtext(
-        'block_leeloo_prodcuts/vendorkey',
-        get_string('vendorkey', 'block_leeloo_prodcuts'),
-        get_string('vendorkey_help', 'block_leeloo_prodcuts'),
+        'block_leeloo_products/vendorkey',
+        get_string('vendorkey', 'block_leeloo_products'),
+        get_string('vendorkey_help', 'block_leeloo_products'),
         0
     ));
 }
