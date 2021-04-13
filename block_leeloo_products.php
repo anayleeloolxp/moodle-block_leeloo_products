@@ -215,12 +215,4 @@ class block_leeloo_products extends block_base {
     public function applicable_formats() {
         return array('all' => true);
     }
-
-    /**
-     * Get settings from Leeloo
-     */
-    public function cron() {
-        require_once($CFG->dirroot . '/blocks/leeloo_products/lib.php');
-        updateconfleeloo_products();
-    }
 }
