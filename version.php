@@ -32,4 +32,5 @@ $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v1.6.0';
 $plugin->dependencies = array(
     'auth_leeloo_pay_sso' => 2020022105,
+    'local_leeloolxpcontentapi' => 2021031907,
 );
