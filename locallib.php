@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Fetch and Update Configration From L
  */
-function updateconfleeloo_products() {
+function block_leeloo_products_updateconf() {
     if (isset(get_config('block_leeloo_products')->license)) {
         $leeloolxplicense = get_config('block_leeloo_products')->license;
     } else {
