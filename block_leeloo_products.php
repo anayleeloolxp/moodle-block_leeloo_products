@@ -67,7 +67,7 @@ class block_leeloo_products extends block_base {
 
         require_once($CFG->libdir . '/filelib.php');
 
-        $this->page->requires->js(new moodle_url($CFG->wwwroot . '/blocks/leeloo_products/js/custom.js'));
+        $this->page->requires->js(new moodle_url('/blocks/leeloo_products/js/custom.js'));
 
         if ($this->content !== null) {
             return $this->content;
