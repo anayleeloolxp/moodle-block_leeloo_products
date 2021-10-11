@@ -33,7 +33,7 @@ if ($ADMIN->fulltree) {
         get_string('license', 'block_leeloo_products'),
         0
     );
-    $setting->set_updatedcallback(block_leeloo_products_updateconf());
+    //$setting->set_updatedcallback(block_leeloo_products_updateconf());
     $settings->add($setting);
 
     $setting = new admin_setting_configleeloo_products('block_leeloo_products/settingsjson', '', '', '', PARAM_RAW);
