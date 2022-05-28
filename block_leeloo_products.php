@@ -22,7 +22,6 @@
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die;
 
 /**
  * Products block
@@ -165,7 +164,8 @@ class block_leeloo_products extends block_base {
                 $buybuttonhtml
             </div>";
 
-            $leeloomodal = "<div class='modal fade leelooProdcutModal' tabindex='-1' aria-labelledby='gridSystemModalLabel' id='leelooprodcutModal_$productid' role='dialog'>
+            $leeloomodal = "<div class='modal fade leelooProdcutModal' tabindex='-1' " .
+                "aria-labelledby='gridSystemModalLabel' id='leelooprodcutModal_$productid' role='dialog'>
                 <div class='modal-dialog'>
                     <div class='modal-content'>
                         <div class='modal-header'>
@@ -182,7 +182,8 @@ class block_leeloo_products extends block_base {
 
             $this->content->text .= '<div class="leeloo_product">';
 
-            $this->content->text .= '<div class="leeloo_product_image"><img style="width: 100%;" src="' . $productsin->imgurl . '"/></div>';
+            $this->content->text .= '<div class="leeloo_product_image"><img style="width: 100%;" src="' .
+                $productsin->imgurl . '"/></div>';
 
             $this->content->text .= '<div class="leeloo_product_name">' . $productsin->product_name . '</div>';
 
